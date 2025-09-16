@@ -13,7 +13,7 @@ with st.form("Car_form"):
     Present_Price = st.number_input("Enter present price of the Car", min_value=0.0, step=1000.0)
     fuel_type = st.selectbox("select Fuel Type", ["Petrol","Diesel", "CNG"])
     seller_type = st.selectbox("select Seller Type",["Dealer", "individual"])
-    transmission = st.selectbox("Select Transmission Type", ["Manuel", "Automatic"])
+    transmission = st.selectbox("Select Transmission Type", ["Manual", "Automatic"])
 
     submit_button = st.form_submit_button("Predict Price")
 
@@ -36,7 +36,7 @@ if submit_button:
     data["Seller_Type_encoded"] = data["Seller_Type"].map({"Dealer":0, "Individual":1})
     data["Fuel_Type_encodeded"] = data["Fuel_Type"].map({"Petrol":0, "Diesel":1,"CNG":2})
     X= data[["Present_Price","Fuel_Type_encodeded","Seller_Type_encoded","Transmission_encoded"]]
-
+    st.write(X)
     # predicting
     selling_price = model.predict(X)
     st.write(f"Selling Price: {round(selling_price[0], 2)}")
