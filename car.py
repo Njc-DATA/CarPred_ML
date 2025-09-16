@@ -3,7 +3,7 @@ import pandas as pd
 
 def load_model():
     import joblib   
-    model = joblib.load("Packages\car_pred_model.h5")
+    model = joblib.load("Packages/car_pred_model.h5")
     return model
 
 st.header("Car Prediction App")
@@ -40,3 +40,4 @@ if submit_button:
     # predicting
     selling_price = model.predict(X)
     st.write(f"Selling Price: {round(selling_price[0], 2)}")
+
